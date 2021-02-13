@@ -27,7 +27,7 @@ double frand_a_b(double a, double b) {
 	return (rand() / (double)RAND_MAX) * (b - a) + a;
 }
 
-
+double lastTime = glfwGetTime();
 int main() {
 	//Test de l'initialisation de GLFW
 	if (!glfwInit()) {
@@ -195,6 +195,13 @@ int main() {
 		if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS) {
 			glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
 		}
+
+		while (glfwGetTime() < lastTime + 1.0 / 60)
+		{
+
+		}
+
+		lastTime += 1.0 / 60;
 	} while (close == false);
 	glDeleteBuffers(1, &VBO);
 	glDeleteVertexArrays(1, &VAO);
